@@ -2,39 +2,51 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="be6f9275-84c4-451c-ba54-22e00eb8ace7" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/cryptosphere_backend.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/cryptosphere_backend.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/alerts/services.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/alerts/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/alerts/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/alerts/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/alerts/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/alerts/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/alerts/tests.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alerts/migrations/0001_initial.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/cryptosphere_backend/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/cryptosphere_backend/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/db/base/1/pg_internal.init" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cryptosphere_backend/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/cryptosphere_backend/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data/db/base/16384/1249" beforeDir="false" afterPath="$PROJECT_DIR$/data/db/base/16384/1249" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/db/base/16384/16425" beforeDir="false" afterPath="$PROJECT_DIR$/data/db/base/16384/16425" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/db/base/16384/16397" beforeDir="false" afterPath="$PROJECT_DIR$/data/db/base/16384/16397" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/db/base/16384/16398" beforeDir="false" afterPath="$PROJECT_DIR$/data/db/base/16384/16398" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/db/base/16384/16401" beforeDir="false" afterPath="$PROJECT_DIR$/data/db/base/16384/16401" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/db/base/16384/16403" beforeDir="false" afterPath="$PROJECT_DIR$/data/db/base/16384/16403" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data/db/base/16384/16426" beforeDir="false" afterPath="$PROJECT_DIR$/data/db/base/16384/16426" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/db/base/16384/16429" beforeDir="false" afterPath="$PROJECT_DIR$/data/db/base/16384/16429" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/db/base/16384/16431" beforeDir="false" afterPath="$PROJECT_DIR$/data/db/base/16384/16431" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/db/base/16384/16468" beforeDir="false" afterPath="$PROJECT_DIR$/data/db/base/16384/16468" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/db/base/16384/2224" beforeDir="false" afterPath="$PROJECT_DIR$/data/db/base/16384/2224" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/db/base/16384/2608" beforeDir="false" afterPath="$PROJECT_DIR$/data/db/base/16384/2608" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/db/base/16384/16498" beforeDir="false" afterPath="$PROJECT_DIR$/data/db/base/16384/16498" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/db/base/16384/16504" beforeDir="false" afterPath="$PROJECT_DIR$/data/db/base/16384/16504" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/db/base/16384/16516" beforeDir="false" afterPath="$PROJECT_DIR$/data/db/base/16384/16516" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/db/base/16384/16517" beforeDir="false" afterPath="$PROJECT_DIR$/data/db/base/16384/16517" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/db/base/16384/16526" beforeDir="false" afterPath="$PROJECT_DIR$/data/db/base/16384/16526" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/db/base/16384/16531" beforeDir="false" afterPath="$PROJECT_DIR$/data/db/base/16384/16531" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/db/base/16384/16533" beforeDir="false" afterPath="$PROJECT_DIR$/data/db/base/16384/16533" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/db/base/16384/16534" beforeDir="false" afterPath="$PROJECT_DIR$/data/db/base/16384/16534" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/db/base/16384/2606" beforeDir="false" afterPath="$PROJECT_DIR$/data/db/base/16384/2606" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data/db/base/16384/2610" beforeDir="false" afterPath="$PROJECT_DIR$/data/db/base/16384/2610" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/db/base/16384/2678" beforeDir="false" afterPath="$PROJECT_DIR$/data/db/base/16384/2678" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/db/base/16384/pg_internal.init" beforeDir="false" afterPath="$PROJECT_DIR$/data/db/base/16384/pg_internal.init" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/db/base/5/pg_internal.init" beforeDir="false" afterPath="$PROJECT_DIR$/data/db/base/5/pg_internal.init" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/db/base/16384/2620" beforeDir="false" afterPath="$PROJECT_DIR$/data/db/base/16384/2620" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/db/base/16384/2665" beforeDir="false" afterPath="$PROJECT_DIR$/data/db/base/16384/2665" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/db/base/16384/2673" beforeDir="false" afterPath="$PROJECT_DIR$/data/db/base/16384/2673" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data/db/global/1262" beforeDir="false" afterPath="$PROJECT_DIR$/data/db/global/1262" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/db/global/2671" beforeDir="false" afterPath="$PROJECT_DIR$/data/db/global/2671" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/db/global/2672" beforeDir="false" afterPath="$PROJECT_DIR$/data/db/global/2672" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data/db/global/pg_control" beforeDir="false" afterPath="$PROJECT_DIR$/data/db/global/pg_control" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/db/global/pg_internal.init" beforeDir="false" afterPath="$PROJECT_DIR$/data/db/global/pg_internal.init" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/db/pg_subtrans/0000" beforeDir="false" afterPath="$PROJECT_DIR$/data/db/pg_subtrans/0000" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data/db/pg_wal/000000010000000000000001" beforeDir="false" afterPath="$PROJECT_DIR$/data/db/pg_wal/000000010000000000000001" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data/db/pg_xact/0000" beforeDir="false" afterPath="$PROJECT_DIR$/data/db/pg_xact/0000" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/db/postmaster.pid" beforeDir="false" afterPath="$PROJECT_DIR$/data/db/postmaster.pid" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/debug.log" beforeDir="false" afterPath="$PROJECT_DIR$/debug.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DjangoConsoleOptions" custom-start-script="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)">
+    <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -62,6 +74,7 @@
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
     "ai.playground.ignore.import.keys.banner.in.settings": "true",
     "git-widget-placeholder": "main",
+    "settings.editor.selected.configurable": "preferences.lookFeel",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -109,7 +122,7 @@
       <option name="presentableId" value="Default" />
       <updated>1773170470515</updated>
       <workItem from="1773170471626" duration="3819000" />
-      <workItem from="1773253535150" duration="1277000" />
+      <workItem from="1773253535150" duration="4333000" />
     </task>
     <servers />
   </component>

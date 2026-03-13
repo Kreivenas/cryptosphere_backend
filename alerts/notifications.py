@@ -1,33 +1,50 @@
+import requests
 import logging
 
 logger = logging.getLogger(__name__)
 
+
 class NotificationService:
     """
-    Handles all outgoing communications to users.
-    Currently supports Console/Logs. Email/Telegram to be added.
+    Handles encrypted communication with Telegram Bot API.
     """
+    TELEGRAM_TOKEN = "8094124388:AAEtKlBtXowUJ9QdFGzJGd2rX5SfcBuyfH8"
+
+    # Tavo ID jau čia!
+    TELEGRAM_CHAT_ID = "1379181051"
+
+    @staticmethod
+    def send_telegram_message(message):
+        """
+        Dispatches a secure message to the specified Telegram Chat ID.
+        """
+        url = f"https://api.telegram.org/bot{NotificationService.TELEGRAM_TOKEN}/sendMessage"
+        payload = {
+            "chat_id": NotificationService.TELEGRAM_CHAT_ID,
+            "text": message,
+            "parse_mode": "HTML"
+        }
+        try:
+            response = requests.post(url, json=payload, timeout=10)
+            response.raise_for_status()
+            return True
+        except Exception as e:
+            logger.error(f"Telegram API dispatch error: {e}")
+            return False
 
     @staticmethod
     def send_price_alert(alert, current_price):
         """
-        Dispatches a notification when a price target is met.
+        Formats and sends the high-priority crypto alert.
         """
         message = (
-            f"Subject: 🚀 Crypto Alert for {alert.currency}!\n"
-            f"Hello {alert.user.username},\n"
-            f"Your target price of ${alert.target_price} for {alert.currency} has been reached.\n"
-            f"Current market price: ${current_price}.\n"
-            f"Check your dashboard for more details."
+            f"🚀 <b>CRYPTO NOTIFICATION</b> 🚀\n\n"
+            f"Asset: <b>{alert.currency}</b>\n"
+            f"Status: <b>Target Met</b>\n"
+            f"Target Price: <b>${alert.target_price}</b>\n"
+            f"Market Price: <b>${current_price}</b>\n\n"
+            f"<i>Powered by CryptoSphere Engine v1.0</i>"
         )
 
-        # 1. Log the notification (For internal tracking)
-        logger.info(f"DISPATCHING NOTIFICATION to {alert.user.email} for {alert.currency}")
-
-        # 2. Print to console (For development visibility)
-        print("\n" + "="*50)
-        print(message)
-        print("="*50 + "\n")
-
-        # TODO: Integration with SendGrid or AWS SES goes here
-        return True
+        print(f"--- [DISPATCH] Sending Telegram alert to user {alert.user.username}")
+        return NotificationService.send_telegram_message(message)

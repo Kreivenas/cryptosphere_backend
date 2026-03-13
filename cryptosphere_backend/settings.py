@@ -26,9 +26,22 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'drf_spectacular',
     'rest_framework',
     'alerts',
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+}
+
+# Swaggerio nustatymai (kad pavadinimas būtų gražus)
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'CryptoSphere API',
+    'DESCRIPTION': 'High-performance crypto alert engine',
+    'VERSION': '1.0.0',
+    'SERVE_INCLUDE_SCHEMA': False,
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

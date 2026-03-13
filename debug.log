@@ -152,3 +152,35 @@ LINE 1: INSERT INTO "alerts_alert" ("user_id", "currency", "target_p...
 "POST /admin/alerts/alert/add/ HTTP/1.1" 500 201215
 C:\Users\User\PycharmProjects\cryptosphere_backend\alerts\migrations\0001_initial.py changed, reloading.
 Watching for file changes with StatReloader
+"POST /admin/alerts/alert/add/ HTTP/1.1" 302 0
+"GET /admin/alerts/alert/ HTTP/1.1" 200 12624
+"GET /static/admin/css/changelists.css HTTP/1.1" 200 7498
+"GET /static/admin/img/icon-no.svg HTTP/1.1" 200 645
+"GET /static/admin/img/search.svg HTTP/1.1" 200 607
+"GET /static/admin/js/filters.js HTTP/1.1" 200 978
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /static/admin/img/tooltag-add.svg HTTP/1.1" 200 593
+"GET /static/admin/img/icon-yes.svg HTTP/1.1" 200 558
+"GET /static/admin/img/sorting-icons.svg HTTP/1.1" 200 1761
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 200 12068
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 2222
+C:\Users\User\PycharmProjects\cryptosphere_backend\cryptosphere_backend\urls.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\User\PycharmProjects\cryptosphere_backend\cryptosphere_backend\urls.py changed, reloading.
+C:\Users\User\PycharmProjects\cryptosphere_backend\cryptosphere_backend\urls.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 200 142
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 2382
+C:\Users\User\PycharmProjects\cryptosphere_backend\cryptosphere_backend\urls.py changed, reloading.
+C:\Users\User\PycharmProjects\cryptosphere_backend\cryptosphere_backend\urls.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 200 2233

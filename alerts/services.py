@@ -1,6 +1,7 @@
 import requests
 import logging
 from .models import Alert
+from .notifications import NotificationService
 
 logger = logging.getLogger(__name__)
 
@@ -8,76 +9,57 @@ logger = logging.getLogger(__name__)
 class CryptoService:
     """
     Service layer to handle external cryptocurrency API interactions.
-    Currently using CoinGecko Public API.
     """
     BASE_URL = "https://api.coingecko.com/api/v3"
 
     @staticmethod
     def get_price(coin_id='bitcoin'):
-        """
-        Fetches the current price of a coin in USD.
-        :param coin_id: The ID of the coin (e.g., 'bitcoin', 'ethereum')
-        :return: Decimal price or None if failed
-        """
         url = f"{CryptoService.BASE_URL}/simple/price"
-        params = {
-            'ids': coin_id,
-            'vs_currencies': 'usd'
-        }
-
+        params = {'ids': coin_id, 'vs_currencies': 'usd'}
         try:
             response = requests.get(url, params=params, timeout=10)
-            response.raise_for_status()  # Raises error for 4xx or 5xx responses
+            response.raise_for_status()
             data = response.json()
-
-            price = data.get(coin_id, {}).get('usd')
-            if price:
-                logger.info(f"Successfully fetched price for {coin_id}: ${price}")
-                return price
-
-            logger.warning(f"Price for {coin_id} not found in response.")
-            return None
-
-        except requests.exceptions.RequestException as e:
-            logger.error(f"Error fetching price from CoinGecko: {e}")
+            return data.get(coin_id, {}).get('usd')
+        except Exception as e:
+            logger.error(f"Failed to fetch price for {coin_id}: {e}")
             return None
 
 
 def check_all_alerts():
     """
-    Core business logic: Iterates through active alerts and
-    compares target prices with live market data.
+    Main engine: evaluates prices and dispatches notifications.
     """
-    # 1. We'll check BTC and ETH for now
-    currencies_to_check = ['bitcoin', 'ethereum']
+    asset_map = {
+        'bitcoin': 'BTC',
+        'ethereum': 'ETH',
+        'solana': 'SOL'
+    }
 
-    for coin_id in currencies_to_check:
+    print("\n--- [SYSTEM] Starting Price Check Cycle ---")
+
+    for coin_id, symbol in asset_map.items():
         current_price = CryptoService.get_price(coin_id)
 
-        if not current_price:
+        if current_price is None:
+            print(f"--- [ERROR] Skipping {symbol}: Price data unavailable")
             continue
 
-        # Map 'bitcoin' ID to our 'BTC' choice in Model
-        symbol = 'BTC' if coin_id == 'bitcoin' else 'ETH'
-
-        # 2. Get all pending alerts for this currency
-        active_alerts = Alert.objects.filter(
-            is_triggered=False,
-            currency=symbol
-        )
+        active_alerts = Alert.objects.filter(is_triggered=False, currency=symbol)
+        print(f"--- [INFO] Asset: {symbol} | Price: ${current_price} | Active Alerts: {active_alerts.count()}")
 
         for alert in active_alerts:
-            # Business Logic: Check if price reached target
-            # In a real SaaS, we check both UP and DOWN directions.
-            # For now: trigger if current price is >= target
+            # Trigger logic: Price meets or exceeds target
             if current_price >= alert.target_price:
-                logger.info(f"!!! TRIGGERED !!! {alert.user.username}'s {symbol} alert at {alert.target_price}")
+                print(f"--- [TRIGGER] User: {alert.user.username} | {symbol} target {alert.target_price} reached!")
 
-                # Update status so we don't trigger it again
+                # Update DB state
                 alert.is_triggered = True
                 alert.save()
 
-                # TODO: Integrated Email/Telegram/SMS service here
+                # Dispatch notification directly
+                NotificationService.send_price_alert(alert, current_price)
             else:
-                logger.info(
-                    f"Status: {symbol} is ${current_price}. Target {alert.target_price} not reached for {alert.user.username}")
+                print(f"--- [PENDING] User: {alert.user.username} | Target: {alert.target_price}")
+
+    print("--- [SYSTEM] Price Check Cycle Finished ---\n")

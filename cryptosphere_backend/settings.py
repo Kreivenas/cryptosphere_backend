@@ -1,5 +1,14 @@
 
 from pathlib import Path
+from celery.schedules import crontab
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
+# Django settings now pull from your .env file
+TELEGRAM_BOT_TOKEN = os.getenv('TELEGRAM_BOT_TOKEN')
+TELEGRAM_CHAT_ID = os.getenv('TELEGRAM_CHAT_ID')
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -28,8 +37,18 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'drf_spectacular',
     'rest_framework',
+    'django_celery_beat',
     'alerts',
 ]
+
+
+CELERY_BROKER_URL = 'redis://127.0.0.1:6379/0'
+CELERY_RESULT_BACKEND = 'redis://127.0.0.1:6379/0'
+CELERY_ACCEPT_CONTENT = ['json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
+
+
 
 REST_FRAMEWORK = {
     'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
@@ -137,5 +156,20 @@ LOGGING = {
             'level': 'INFO',
             'propagate': True,
         },
+    },
+}
+
+# ... (visas kitas settings.py turinys) ...
+
+# Celery settings at the very bottom
+CELERY_BROKER_URL = 'redis://127.0.0.1:6379/0'
+CELERY_RESULT_BACKEND = 'redis://127.0.0.1:6379/0'
+CELERY_TIMEZONE = TIME_ZONE
+
+
+CELERY_BEAT_SCHEDULE = {
+    'check-prices-every-minute': {
+        'task': 'alerts.tasks.check_all_alerts',
+        'schedule': 60.0,
     },
 }

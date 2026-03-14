@@ -5,3 +5,5 @@ data/db/
 .idea/
 .vscode/
 *.log
+.env
+db.sqlite3

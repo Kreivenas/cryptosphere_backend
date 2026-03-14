@@ -1,50 +1,48 @@
 import requests
 import logging
+from django.conf import settings
 
 logger = logging.getLogger(__name__)
 
-
 class NotificationService:
     """
-    Handles encrypted communication with Telegram Bot API.
+    Sutvarkyta klasė pranešimų siuntimui.
     """
-    TELEGRAM_TOKEN = "8094124388:AAEtKlBtXowUJ9QdFGzJGd2rX5SfcBuyfH8"
-
-    # Tavo ID jau čia!
-    TELEGRAM_CHAT_ID = "1379181051"
 
     @staticmethod
     def send_telegram_message(message):
-        """
-        Dispatches a secure message to the specified Telegram Chat ID.
-        """
-        url = f"https://api.telegram.org/bot{NotificationService.TELEGRAM_TOKEN}/sendMessage"
+
+        token = getattr(settings, 'TELEGRAM_BOT_TOKEN', None)
+        chat_id = getattr(settings, 'TELEGRAM_CHAT_ID', None)
+
+        if not token or not chat_id:
+            logger.error("TELEGRAM_BOT_TOKEN arba TELEGRAM_CHAT_ID nerastas settings.py faile!")
+            return False
+
+        url = f"https://api.telegram.org/bot{token}/sendMessage"
         payload = {
-            "chat_id": NotificationService.TELEGRAM_CHAT_ID,
+            "chat_id": chat_id,
             "text": message,
             "parse_mode": "HTML"
         }
+
         try:
             response = requests.post(url, json=payload, timeout=10)
             response.raise_for_status()
             return True
         except Exception as e:
-            logger.error(f"Telegram API dispatch error: {e}")
+            logger.error(f"Telegram siuntimo klaida: {e}")
             return False
 
     @staticmethod
     def send_price_alert(alert, current_price):
-        """
-        Formats and sends the high-priority crypto alert.
-        """
+
         message = (
-            f"🚀 <b>CRYPTO NOTIFICATION</b> 🚀\n\n"
-            f"Asset: <b>{alert.currency}</b>\n"
-            f"Status: <b>Target Met</b>\n"
-            f"Target Price: <b>${alert.target_price}</b>\n"
-            f"Market Price: <b>${current_price}</b>\n\n"
-            f"<i>Powered by CryptoSphere Engine v1.0</i>"
+            f"🚀 <b>KRIPTO ALERTAS!</b>\n\n"
+            f"Turtas: <b>{alert.currency}</b>\n"
+            f"Target kaina: ${alert.target_price}\n"
+            f"Dabartinė kaina: <b>${current_price}</b>\n\n"
+            f"Vartotojas: {alert.user.username}"
         )
 
-        print(f"--- [DISPATCH] Sending Telegram alert to user {alert.user.username}")
         return NotificationService.send_telegram_message(message)
